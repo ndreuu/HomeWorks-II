@@ -84,7 +84,7 @@ public class Controller {
 		backgroundThread.setOnSucceeded(new EventHandler<WorkerStateEvent>() {
 			@Override
 			public void handle(WorkerStateEvent workerStateEvent) {
-				System.out.println("ChetoRabotaet");
+				System.out.println("step");
 			}
 		});
 
@@ -113,7 +113,7 @@ public class Controller {
 		backgroundThread.setOnSucceeded(new EventHandler<WorkerStateEvent>() {
 			@Override
 			public void handle(WorkerStateEvent workerStateEvent) {
-				System.out.println("ChetoRabotaet");
+				System.out.println("step");
 			}
 		});
 

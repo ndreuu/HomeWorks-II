@@ -34,7 +34,7 @@ public class Square {
 		}
 	}
 
-	private boolean checkFull() {
+	boolean checkFull() {
 		int check = 0;
 		for (int i = 0; i < SIZE; i++) {
 			for (int j = 0; j < SIZE; j++) {
@@ -49,7 +49,7 @@ public class Square {
 		return true;
 	}
 
-	private boolean checkWinO() {
+	boolean checkWinO() {
 		for (int i = 0; i < SIZE; i++) {
 			int check = 0;
 			for (int j = 0; j < SIZE; j++) {
@@ -97,7 +97,7 @@ public class Square {
 		return false;
 	}
 
-	private boolean checkWinX() {
+	boolean checkWinX() {
 		for (int i = 0; i < SIZE; i++) {
 			int check = 0;
 			for (int j = 0; j < SIZE; j++) {
@@ -148,7 +148,7 @@ public class Square {
 	public boolean stayAtThisStep;
 	public boolean stop = false;
 	public void step(int coordX, int coordY, char value) {
-		if (coordX >= 0 && coordX <= SIZE && coordY >= 0 && coordY <= SIZE && square[coordX][coordY] == EMPTY) {
+		if (coordX >= 0 && coordX < SIZE && coordY >= 0 && coordY < SIZE && square[coordX][coordY] == EMPTY) {
 			square[coordX][coordY] = value;
 		} else {
 			stayAtThisStep = true;
@@ -165,18 +165,21 @@ public class Square {
 			System.out.println("~~~~~~~");
 			System.out.println("O - WON");
 			won = 'O';
+			System.exit(0);
 		}
 		else if (checkWinX()) {
 			printSquare();
 			System.out.println("~~~~~~~");
 			System.out.println("X - WON");
 			won = 'X';
+			System.exit(0);
 		}
 		else if (checkFull()) {
 			printSquare();
 			System.out.println("~~~~~~~");
 			System.out.println("DRAW");
 			won = '_';
+			System.exit(0);
 		}
 		this.printSquare();
 		System.out.println();

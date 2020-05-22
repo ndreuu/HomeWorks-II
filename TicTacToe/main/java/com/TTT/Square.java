@@ -148,7 +148,7 @@ public class Square {
 	public boolean stayAtThisStep;
 	public boolean stop = false;
 	public void step(int coordX, int coordY, char value) {
-		if (coordX >= 0 && coordX <= SIZE && coordY >= 0 && coordY <= SIZE && square[coordX][coordY] == EMPTY) {
+		if (coordX >= 0 && coordX < SIZE && coordY >= 0 && coordY < SIZE && square[coordX][coordY] == EMPTY) {
 			square[coordX][coordY] = value;
 		} else {
 			stayAtThisStep = true;

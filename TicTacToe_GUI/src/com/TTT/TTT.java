@@ -8,96 +8,12 @@ public class TTT {
 	public Player player2;
 	public Square square = new Square();
 	private Scanner in = new Scanner(System.in);
-	private Player[] players = new Player[5];
+	private Player[] players = new Player[6];
 	public int out;
 
-	public void menu() {
-		while (true) {
-			int pick;
-			do {
-				System.out.println("Choose side first player");
-				System.out.println("click 0 to choose: 'O'");
-				System.out.println("click 1 to choose: 'X'");
-				pick = in.nextInt();
-				if (pick != 0 || pick != 1) {
-					System.out.println("incorrect input, try again");
-				}
-			} while (pick != 0 && pick != 1);
-			char mark;
-			if (pick == 0) {
-				mark = 'O';
-			} else {
-				mark = 'X';
-			}
-			System.out.println("Choose first player");
-			System.out.println("click 0 to choose: 'Human'");
-			System.out.println("click 1 to choose: 'Easy Bot'");
-			System.out.println("click 2 to choose: 'Medium Bot'");
-			System.out.println("click 3 to choose: 'Hard Bot'");             //add new
-			pick = in.nextInt();
-			if (pick == 0) {
-				this.players[0] = new Human(mark);
-				break;
-			} else if (pick == 1) {
-				this.players[0] = new BotRandom(mark);
-				break;
-			} else if (pick == 2) {
-				this.players[0] = new GreedyBot(mark);
-				break;
-			} else if (pick == 3) {
-				this.players[0] = new HardBot(mark);
-				break;
-			} else {
-				System.out.println("incorrect input, try again");
-			}
-		}
-			char enemyMark;
-			if (players[0].mark == 'O') {
-				enemyMark = 'X';
-			} else {
-				enemyMark = 'O';
-			}
-			int enemyNumb;
-			while (true) {
-				System.out.println("Choose second player");
-				System.out.println("click 0 to choose: 'Human'");
-				System.out.println("click 1 to choose: 'Easy Bot'");
-				System.out.println("click 2 to choose: 'Medium Bot'");
-				System.out.println("click 3 to choose: 'Hard Bot'");
-				//enemyNumb = in.nextInt();
-				int pick = in.nextInt();
-				if (pick == 0) {
-					enemyNumb = 1;
-					this.players[1] = new Human(enemyMark);
-					break;
-				} else if (pick == 1) {
-					enemyNumb = 2;
-					this.players[2] = new BotRandom(enemyMark);
-					break;
-				} else if (pick == 2) {
-					enemyNumb = 3;
-					this.players[3] = new GreedyBot(enemyMark);
-					break;
-				} else if (pick == 3) {
-					enemyNumb = 4;
-					this.players[4] = new HardBot(enemyMark);
-					break;
-				} else {
-					System.out.println("incorrect input, try again");
-				}
-			}
-			if (players[0].mark == 'X') {
-				this.player1 = players[0];
-				this.player2 = players[enemyNumb];
-				//	square.setSecondPlayer(player2);
-			} else {
-				this.player1 = players[enemyNumb];
-				this.player2 = players[0];
-				//	square.setSecondPlayer(player1);
-			}
-	}
-	public void start() {
-		menu();
+	public void start(Player player1, Player player2) {
+		square.printSquare();
+		System.out.println();
 		int number = 1;
 		while (true) {
 			player1.setStepNumber(number);

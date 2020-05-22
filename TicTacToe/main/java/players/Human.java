@@ -1,15 +1,13 @@
 package players;
 
-import com.TTT.Square;
 
 import java.util.Scanner;
 
 public class Human extends Player {
 	Scanner in = new Scanner(System.in);
 
-	public Human(char mark) {
-		super(mark);
-		super.type = "Human";
+	public Human() {
+		type = "Human";
 	}
 
 	public int stepX() {
@@ -26,19 +24,4 @@ public class Human extends Player {
 		return in.nextInt();
 	}
 
-	public void setSquare(Square square) {
-		super.square = square;
-	}
-
-	public void setEnemyX(int enemyX) {
-		super.enemyX = enemyX;
-	}
-
-	public void setEnemyY(int enemyY) {
-		super.enemyY = enemyY;
-	}
-
-	public void setStepNumber(int stepNumber) {
-		super.stepNumber = stepNumber;
-	}
 }

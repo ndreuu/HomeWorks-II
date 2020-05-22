@@ -39,9 +39,9 @@ public class GreedyBot extends Player {
 	public void checkWinEnd() {
 		if (square.square[0][0] == EMPTY &&
 				(
-								(square.square[0][1] == super.mark && square.square[0][2] == super.mark) ||
-								(square.square[1][1] == super.mark && square.square[2][2] == super.mark) ||
-								(square.square[1][0] == super.mark && square.square[2][0] == super.mark)
+						(square.square[0][1] == super.mark && square.square[0][2] == super.mark) ||
+								(square.square[1][1] == mark && square.square[2][2] == mark) ||
+								(square.square[1][0] == mark && square.square[2][0] == mark)
 				)
 		) {
 			this.coordX = 0;
@@ -50,9 +50,9 @@ public class GreedyBot extends Player {
 		}
 		if (square.square[0][2] == EMPTY &&
 				(
-								(square.square[0][0] == super.mark && square.square[0][1] == super.mark) ||
-								(square.square[1][1] == super.mark && square.square[2][0] == super.mark) ||
-								(square.square[1][2] == super.mark && square.square[2][2] == super.mark)
+						(square.square[0][0] == mark && square.square[0][1] == mark) ||
+								(square.square[1][1] == mark && square.square[2][0] == mark) ||
+								(square.square[1][2] == mark && square.square[2][2] == mark)
 				)
 		) {
 			this.coordX = 0;
@@ -61,9 +61,9 @@ public class GreedyBot extends Player {
 		}
 		if (square.square[2][0] == EMPTY &&
 				(
-								(square.square[0][0] == super.mark && square.square[1][0] == super.mark) ||
-								(square.square[1][1] == super.mark && square.square[0][2] == super.mark) ||
-								(square.square[2][1] == super.mark && square.square[2][2] == super.mark)
+						(square.square[0][0] == mark && square.square[1][0] == mark) ||
+								(square.square[1][1] == mark && square.square[0][2] == mark) ||
+								(square.square[2][1] == mark && square.square[2][2] == mark)
 				)
 		) {
 			this.coordX = 2;
@@ -72,9 +72,9 @@ public class GreedyBot extends Player {
 		}
 		if (square.square[2][2] == EMPTY &&
 				(
-								(square.square[0][2] == super.mark && square.square[1][2] == super.mark) ||
-								(square.square[0][0] == super.mark && square.square[1][1] == super.mark) ||
-								(square.square[2][0] == super.mark && square.square[2][1] == super.mark)
+						(square.square[0][2] == mark && square.square[1][2] == super.mark) ||
+								(square.square[0][0] == mark && square.square[1][1] == mark) ||
+								(square.square[2][0] == mark && square.square[2][1] == mark)
 				)
 		) {
 			this.coordX = 2;
@@ -83,8 +83,8 @@ public class GreedyBot extends Player {
 		}
 		if (square.square[0][1] == EMPTY &&
 				(
-								(square.square[0][0] == super.mark && square.square[0][2] == super.mark) ||
-								(square.square[1][1] == super.mark && square.square[2][1] == super.mark)
+						(square.square[0][0] == mark && square.square[0][2] == mark) ||
+								(square.square[1][1] == mark && square.square[2][1] == mark)
 				)
 		) {
 			this.coordX = 0;
@@ -93,8 +93,8 @@ public class GreedyBot extends Player {
 		}
 		if (square.square[2][1] == EMPTY &&
 				(
-								(square.square[2][0] == super.mark && square.square[2][2] == super.mark) ||
-								(square.square[0][1] == super.mark && square.square[1][1] == super.mark)
+						(square.square[2][0] == mark && square.square[2][2] == mark) ||
+								(square.square[0][1] == mark && square.square[1][1] == mark)
 				)
 		) {
 			this.coordX = 2;
@@ -103,8 +103,8 @@ public class GreedyBot extends Player {
 		}
 		if (square.square[1][0] == EMPTY &&
 				(
-								(square.square[0][0] == super.mark && square.square[2][0] == super.mark) ||
-								(square.square[1][1] == super.mark && square.square[1][2] == super.mark)
+						(square.square[0][0] == mark && square.square[2][0] == mark) ||
+								(square.square[1][1] == mark && square.square[1][2] == mark)
 				)
 		) {
 			this.coordX = 1;
@@ -113,8 +113,8 @@ public class GreedyBot extends Player {
 		}
 		if (square.square[1][2] == EMPTY &&
 				(
-								(square.square[0][2] == super.mark && square.square[2][2] == super.mark) ||
-								(square.square[1][1] == super.mark && square.square[1][0] == super.mark)
+						(square.square[0][2] == mark && square.square[2][2] == mark) ||
+								(square.square[1][1] == mark && square.square[1][0] == mark)
 				)
 		) {
 			this.coordX = 1;
@@ -123,17 +123,18 @@ public class GreedyBot extends Player {
 		}
 		if (square.square[1][1] == EMPTY &&
 				(
-								(square.square[0][0] == super.mark && square.square[2][2] == super.mark) ||
-								(square.square[0][1] == super.mark && square.square[2][1] == super.mark) ||
-								(square.square[0][2] == super.mark && square.square[2][0] == super.mark) ||
-								(square.square[1][0] == super.mark && square.square[1][2] == super.mark)
+						(square.square[0][0] == mark && square.square[2][2] == mark) ||
+								(square.square[0][1] == mark && square.square[2][1] == mark) ||
+								(square.square[0][2] == mark && square.square[2][0] == mark) ||
+								(square.square[1][0] == mark && square.square[1][2] == mark)
 				)
 		) {
 			this.coordX = 1;
 			this.coordY = 1;
 			return;
 		}
-	}//
+	}
+
 
 	private void distantionStep() {
 		int maxDistantion = -1;
@@ -169,7 +170,7 @@ public class GreedyBot extends Player {
 	private boolean firstXinMid() {
 		if (square.square[1][1] == 'X' &&
 				(
-								(square.square[0][0] == EMPTY && square.square[2][2] == EMPTY) &&
+						(square.square[0][0] == EMPTY && square.square[2][2] == EMPTY) &&
 								(square.square[0][1] == EMPTY && square.square[2][1] == EMPTY) &&
 								(square.square[0][2] == EMPTY && square.square[2][0] == EMPTY) &&
 								(square.square[1][0] == EMPTY && square.square[1][2] == EMPTY)
@@ -256,6 +257,8 @@ public class GreedyBot extends Player {
 		}
 	}
 
+
+
 	public int stepX() {
 		hardStep();
 		checkWinEnd();
@@ -266,8 +269,7 @@ public class GreedyBot extends Player {
 		return this.coordY;
 	}
 
-	public GreedyBot(char mark) {
-		super(mark);
-		this.enemyMark = takeEnemyMark();
+	public GreedyBot() {
+		type = "Bot";
 	}
 }

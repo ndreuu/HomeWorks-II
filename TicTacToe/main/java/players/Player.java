@@ -13,16 +13,34 @@ public abstract class Player {
 	public Square square;
 	public String type = "";
 
+	public void setSquare(Square square) {
+		this.square = square;
+	}
 
-	public abstract void setSquare(Square square);
-	public abstract void setEnemyX(int enemyX);
-	public abstract void setEnemyY(int enemyY);
-	public abstract void setStepNumber(int stepNumber);
+	public void setEnemyX(int enemyX) {
+		this.enemyX = enemyX;
+	}
+
+	public void setEnemyY(int enemyY) {
+		this.enemyY = enemyY;
+	}
+
+	public void setStepNumber(int stepNumber) {
+		this.stepNumber = stepNumber;
+	}
+
+	public void setMark(int ind) {
+		if (ind == 2) {
+			mark = 'O';
+		} else {
+			mark = 'X';
+		}
+	}
+
 	public abstract int stepX();
 	public abstract int stepY();
 
-	Player(char mark) {
-		this.mark = mark;
+	protected Player() {
 		this.square = new Square();
 		this.desktop = false;
 	}

@@ -20,6 +20,10 @@ public class Plugin extends BotRandom {
         return 0;
     }
 
+    public static void info() {
+        System.out.println("enter 5 to choose Plugin");
+    }
+
     public int stepY() {
         return y;
     }

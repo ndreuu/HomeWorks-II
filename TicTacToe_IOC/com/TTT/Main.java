@@ -61,7 +61,6 @@ public class Main {
 		} catch (InvocationTargetException e) {
 			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
-
 		} catch (NoSuchMethodException e) {
 			e.printStackTrace();
 		}

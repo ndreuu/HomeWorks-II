@@ -1,107 +1,46 @@
 package players;
 
 public class HardBot extends GreedyBot {
-
 	private void checkCritical() {
 		enemyMark = takeEnemyMark();
-		if (super.square.square[0][0] == EMPTY &&
-				(
-						(square.square[0][1] == enemyMark && square.square[0][2] == enemyMark) ||
-								(square.square[1][1] == enemyMark && square.square[2][2] == enemyMark) ||
-								(square.square[1][0] == enemyMark && square.square[2][0] == enemyMark)
-				)
-		) {
-			this.coordX = 0;
-			this.coordY = 0;
-			return;
+		int[] sCheck = {0, 0, 0};
+		int[] cCheck = {0, 0, 0};
+		int[] dCheck = {0, 0};
+		for (int i = 0; i < square.SIZE; i++) {
+			for (int j = 0; j < square.SIZE; j++) {
+				if (square.square[i][j] == enemyMark) {
+					sCheck[i]++;
+					cCheck[j]++;
+					if (i == j) {
+						dCheck[0]++;
+					}
+					if (i == 1 && j == 1 || i == 0 && j == 2 || i == 2 && j == 0) {
+						dCheck[1]++;
+					}
+				}
+			}
 		}
-		if (square.square[0][2] == EMPTY &&
-				(
-						(square.square[0][0] == enemyMark && square.square[0][1] == enemyMark) ||
-								(square.square[1][1] == enemyMark && square.square[2][0] == enemyMark) ||
-								(square.square[1][2] == enemyMark && square.square[2][2] == enemyMark)
-				)
-		) {
-			this.coordX = 0;
-			this.coordY = 2;
-			return;
-		}
-		if (square.square[2][0] == EMPTY &&
-				(
-						(square.square[0][0] == enemyMark && square.square[1][0] == enemyMark) ||
-								(square.square[1][1] == enemyMark && square.square[0][2] == enemyMark) ||
-								(square.square[2][1] == enemyMark && square.square[2][2] == enemyMark)
-				)
-		) {
-			this.coordX = 2;
-			this.coordY = 0;
-			return;
-		}
-		if (square.square[2][2] == EMPTY &&
-				(
-						(square.square[0][2] == enemyMark && square.square[1][2] == enemyMark) ||
-								(square.square[0][0] == enemyMark && square.square[1][1] == enemyMark) ||
-								(square.square[2][0] == enemyMark && square.square[2][1] == enemyMark)
-				)
-		) {
-			this.coordX = 2;
-			this.coordY = 2;
-			return;
-		}
-		if (square.square[0][1] == EMPTY &&
-				(
-						(square.square[0][0] == enemyMark && square.square[0][2] == enemyMark) ||
-								(square.square[1][1] == enemyMark && square.square[2][1] == enemyMark)
-				)
-		) {
-			this.coordX = 0;
-			this.coordY = 1;
-			return;
-		}
-		if (square.square[2][1] == EMPTY &&
-				(
-						(square.square[2][0] == enemyMark && square.square[2][2] == enemyMark) ||
-								(square.square[0][1] == enemyMark && square.square[1][1] == enemyMark)
-				)
-		) {
-			this.coordX = 2;
-			this.coordY = 1;
-			return;
-		}
-		if (square.square[1][0] == EMPTY &&
-				(
-						(square.square[0][0] == enemyMark && square.square[2][0] == enemyMark) ||
-								(square.square[1][1] == enemyMark && square.square[1][2] == enemyMark)
-				)
-		) {
-			this.coordX = 1;
-			this.coordY = 0;
-			return;
-		}
-		if (square.square[1][2] == EMPTY &&
-				(
-						(square.square[0][2] == enemyMark && square.square[2][2] == enemyMark) ||
-								(square.square[1][1] == enemyMark && square.square[1][0] == enemyMark)
-				)
-		) {
-			this.coordX = 1;
-			this.coordY = 2;
-			return;
-		}
-		if (square.square[1][1] == EMPTY &&
-				(
-						(square.square[0][0] == enemyMark && square.square[2][2] == enemyMark) ||
-								(square.square[0][1] == enemyMark && square.square[2][1] == enemyMark) ||
-								(square.square[0][2] == enemyMark && square.square[2][0] == enemyMark) ||
-								(square.square[1][0] == enemyMark && square.square[1][2] == enemyMark)
-				)
-		) {
-			this.coordX = 1;
-			this.coordY = 1;
-			return;
+		for (int i = 0; i < square.SIZE; i++) {
+			for (int j = 0; j < square.SIZE; j++) {
+				if (square.square[i][j] == EMPTY && (sCheck[i] == 2 || cCheck[j] == 2)) {
+					this.coordX = i;
+					this.coordY = j;
+					return;
+				}
+				if (square.square[i][j] == EMPTY && i == j && dCheck[0] == 2) {
+					this.coordX = i;
+					this.coordY = j;
+					return;
+				}
+				if (square.square[i][j] == EMPTY && (i == 1 && j == 1 || i == 0 && j == 2 || i == 2 && j == 0) && dCheck[1] == 2) {
+					this.coordX = i;
+					this.coordY = j;
+					return;
+				}
+			}
 		}
 	}
-
+	
 	public int stepX() {
 		hardStep();
 		checkCritical();

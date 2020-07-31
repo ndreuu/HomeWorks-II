@@ -37,101 +37,40 @@ public class GreedyBot extends Player {
 	}
 
 	public void checkWinEnd() {
-		if (square.square[0][0] == EMPTY &&
-				(
-						(square.square[0][1] == super.mark && square.square[0][2] == super.mark) ||
-								(square.square[1][1] == mark && square.square[2][2] == mark) ||
-								(square.square[1][0] == mark && square.square[2][0] == mark)
-				)
-		) {
-			this.coordX = 0;
-			this.coordY = 0;
-			return;
+		int[] sCheck = {0, 0, 0};
+		int[] cCheck = {0, 0, 0};
+		int[] dCheck = {0, 0};
+		for (int i = 0; i < square.SIZE; i++) {
+			for (int j = 0; j < square.SIZE; j++) {
+				if (square.square[i][j] == super.mark) {
+					sCheck[i]++;
+					cCheck[j]++;
+					if (i == j) {
+						dCheck[0]++;
+					}
+					if (i == 1 && j == 1 || i == 0 && j == 2 || i == 2 && j == 0) {
+						dCheck[1]++;
+					}
+				}
+			}
 		}
-		if (square.square[0][2] == EMPTY &&
-				(
-						(square.square[0][0] == mark && square.square[0][1] == mark) ||
-								(square.square[1][1] == mark && square.square[2][0] == mark) ||
-								(square.square[1][2] == mark && square.square[2][2] == mark)
-				)
-		) {
-			this.coordX = 0;
-			this.coordY = 2;
-			return;
-		}
-		if (square.square[2][0] == EMPTY &&
-				(
-						(square.square[0][0] == mark && square.square[1][0] == mark) ||
-								(square.square[1][1] == mark && square.square[0][2] == mark) ||
-								(square.square[2][1] == mark && square.square[2][2] == mark)
-				)
-		) {
-			this.coordX = 2;
-			this.coordY = 0;
-			return;
-		}
-		if (square.square[2][2] == EMPTY &&
-				(
-						(square.square[0][2] == mark && square.square[1][2] == super.mark) ||
-								(square.square[0][0] == mark && square.square[1][1] == mark) ||
-								(square.square[2][0] == mark && square.square[2][1] == mark)
-				)
-		) {
-			this.coordX = 2;
-			this.coordY = 2;
-			return;
-		}
-		if (square.square[0][1] == EMPTY &&
-				(
-						(square.square[0][0] == mark && square.square[0][2] == mark) ||
-								(square.square[1][1] == mark && square.square[2][1] == mark)
-				)
-		) {
-			this.coordX = 0;
-			this.coordY = 1;
-			return;
-		}
-		if (square.square[2][1] == EMPTY &&
-				(
-						(square.square[2][0] == mark && square.square[2][2] == mark) ||
-								(square.square[0][1] == mark && square.square[1][1] == mark)
-				)
-		) {
-			this.coordX = 2;
-			this.coordY = 1;
-			return;
-		}
-		if (square.square[1][0] == EMPTY &&
-				(
-						(square.square[0][0] == mark && square.square[2][0] == mark) ||
-								(square.square[1][1] == mark && square.square[1][2] == mark)
-				)
-		) {
-			this.coordX = 1;
-			this.coordY = 0;
-			return;
-		}
-		if (square.square[1][2] == EMPTY &&
-				(
-						(square.square[0][2] == mark && square.square[2][2] == mark) ||
-								(square.square[1][1] == mark && square.square[1][0] == mark)
-				)
-		) {
-			this.coordX = 1;
-			this.coordY = 2;
-			return;
-		}
-		if (square.square[1][1] == EMPTY &&
-				(
-						(square.square[0][0] == mark && square.square[2][2] == mark) ||
-								(square.square[0][1] == mark && square.square[2][1] == mark) ||
-								(square.square[0][2] == mark && square.square[2][0] == mark) ||
-								(square.square[1][0] == mark && square.square[1][2] == mark)
-				)
-		) {
-			this.coordX = 1;
-			this.coordY = 1;
-			return;
+		for (int i = 0; i < square.SIZE; i++) {
+			for (int j = 0; j < square.SIZE; j++) {
+				if (square.square[i][j] == EMPTY && i == j && dCheck[0] == 2) {
+					this.coordX = i;
+					this.coordY = j;
+				}
+
+				if (square.square[i][j] == EMPTY && (sCheck[i] == 2 || cCheck[j] == 2)) {
+					this.coordX = i;
+					this.coordY = j;
+				}
+
+				if (square.square[i][j] == EMPTY && (i == 1 && j == 1 || i == 0 && j == 2 || i == 2 && j == 0) && dCheck[1] == 2) {
+					this.coordX = i;
+					this.coordY = j;
+				}
+			}
 		}
 	}
 
@@ -202,7 +141,6 @@ public class GreedyBot extends Player {
 
 	public void hardStep() {
 		if (mark == 'X') {
-
 			if (stepNumber == 1) {
 				this.coordX = 1;
 				this.coordY = 1;
@@ -227,7 +165,7 @@ public class GreedyBot extends Player {
 				} else {
 					if (enemyX == 0 && enemyY == 0 || enemyX == 0 && enemyY == 2 || enemyX == 2 && enemyY == 0 || enemyX == 2 && enemyY == 2) {
 						angleStep();
-					} else if ( enemyX == 0 && enemyY == 1 && preEnemyX == 2 && preEnemyY == 1 ||
+					} else if (enemyX == 0 && enemyY == 1 && preEnemyX == 2 && preEnemyY == 1 ||
 							enemyX == 1 && enemyY == 2 && preEnemyX == 1 && preEnemyY == 0 ||
 							enemyX == 2 && enemyY == 1 && preEnemyX == 0 && preEnemyY == 1 ||
 							enemyX == 1 && enemyY == 0 && preEnemyX == 1 && preEnemyY == 2

@@ -10,9 +10,9 @@ public class PlayerFactory {
 	private final static int RandomBot = 2;
 	private final static int GreedyBot = 3;
 	private final static int HardBot = 4;
-	private final static int Plugin = 5;
+	//private final static int Plugin = 5;
 
-	private static ServiceLoader<Player> codecSetLoader = ServiceLoader.load(Player.class);
+	//private static ServiceLoader<Player> codecSetLoader = ServiceLoader.load(Player.class);
 
 	public static Player getPlayer (int typeOfPlayer, int index, boolean isPlugin, String PluginName) {
 		if (isPlugin) {
@@ -40,21 +40,6 @@ public class PlayerFactory {
 			Player player = new HardBot();
 			player.setMark(index);
 			return player;
-		} else if (typeOfPlayer == Plugin) {
-			try {
-				//Player player = ServiceLoader.load(Player.class).findFirst().get();
-				IPlugin player = ServiceLoader.load(IPlugin.class).findFirst().get();
-				player.setMark(index);
-				return (Player) player;
-			} catch (Throwable t) {
-				System.out.println("Firstly install your plugin");
-			}
-			//Player player = ServiceLoader.load(Player.class).findFirst().get();
-			//player.setMark(index);
-			///return player;
-			//Player player = ServiceLoader.load(Player.class).findFirst().get();
-			//player.setMark(index);
-			//return player;
 		}
 		return null;
 	}

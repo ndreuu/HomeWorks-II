@@ -2,7 +2,7 @@ package players;
 
 import com.TTT.Square;
 
-public class GreedyBot extends Player {
+public class GreedyBot extends Player implements IPlugin {
 	public final char EMPTY = square.EMPTY;
 	private final int SIZE = square.SIZE;
 	private final int PRIME = 9973;
@@ -144,7 +144,7 @@ public class GreedyBot extends Player {
 			if (stepNumber == 1) {
 				this.coordX = 1;
 				this.coordY = 1;
-				return;
+				return; 
 			}
 			distantionStep();
 		}
@@ -209,5 +209,10 @@ public class GreedyBot extends Player {
 
 	public GreedyBot() {
 		type = "Bot";
+	}
+
+	@Override
+	public String printName() {
+		return "Greedy";
 	}
 }

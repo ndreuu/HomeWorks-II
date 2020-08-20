@@ -1,7 +1,12 @@
 package players;
 
 
-public class BotRandom extends Player {
+public class BotRandom extends Player implements IPlugin {
+	@Override
+	public String printName() {
+		return "Random";
+	}
+
 	protected final int PRIME = 9973;
 	protected final int SIZE = square.SIZE;
 

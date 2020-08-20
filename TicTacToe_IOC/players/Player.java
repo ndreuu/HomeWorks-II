@@ -2,7 +2,7 @@ package players;
 
 import com.TTT.Square;
 
-public abstract class Player {
+public abstract class Player implements IPlugin{
 	public boolean desktop;
 	public int desktopX = -1;
 	public int desktopY = -1;

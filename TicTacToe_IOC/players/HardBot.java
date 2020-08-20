@@ -1,6 +1,11 @@
 package players;
 
-public class HardBot extends GreedyBot {
+public class HardBot extends GreedyBot implements IPlugin {
+	@Override
+	public String printName() {
+		return "Hard";
+	}
+
 	private void checkCritical() {
 		enemyMark = takeEnemyMark();
 		int[] sCheck = {0, 0, 0};

@@ -3,7 +3,7 @@ package players;
 
 import java.util.Scanner;
 
-public class Human extends Player {
+public class Human extends Player implements IPlugin{
 	Scanner in = new Scanner(System.in);
 
 	public Human() {
@@ -24,4 +24,8 @@ public class Human extends Player {
 		return in.nextInt();
 	}
 
+	@Override
+	public String printName() {
+		return "Human";
+	}
 }
